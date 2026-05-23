@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background-color: #0a0a0f;
+  color: #e8e8f0;
+  font-family: 'DM Sans', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Noise texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.4;
+}
+
+.glow-accent { text-shadow: 0 0 30px rgba(200, 242, 90, 0.6); }
+
+.track-card {
+  animation: fadeUp 0.45s ease both;
+}
+.track-card:nth-child(1) { animation-delay: 0.05s }
+.track-card:nth-child(2) { animation-delay: 0.12s }
+.track-card:nth-child(3) { animation-delay: 0.19s }
+.track-card:nth-child(4) { animation-delay: 0.26s }
+.track-card:nth-child(5) { animation-delay: 0.33s }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scanline {
+  0%   { top: 0%; }
+  100% { top: 100%; }
+}
+
+.scan-line {
+  position: absolute;
+  left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #c8f25a55, transparent);
+  animation: scanline 2s linear infinite;
+  pointer-events: none;
+}
+
+.webcam-ring {
+  box-shadow: 0 0 0 1px #2a2a3a, 0 0 0 3px #0a0a0f, 0 0 40px rgba(200,242,90,0.08);
+}
