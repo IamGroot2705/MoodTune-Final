@@ -2,6 +2,8 @@ import React, { useRef, useState, useCallback } from 'react'
 import Webcam from 'react-webcam'
 import axios from 'axios'
 
+VITE_API_URL = https://moodtune-final.onrender.com
+
 const EMOTION_META = {
   happy:    { emoji: '😄', label: 'Happy',     color: '#f5d020', desc: 'High energy, uplifting vibes' },
   sad:      { emoji: '😢', label: 'Sad',       color: '#6ec6f5', desc: 'Soft, melancholic tones' },
