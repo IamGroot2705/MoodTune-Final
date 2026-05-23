@@ -165,7 +165,7 @@ export default function App() {
   const analyze = useCallback(async (base64) => {
     setLoading(true); setError(null); setResult(null)
     try {
-      const { data } = await axios.post('/analyze', { image: base64, language }, { timeout: 60000 })
+      const { data } = await axios.post(`${API_BASE}/analyze`, { image: base64, language }, { timeout: 60000 })
       setResult(data)
     } catch (e) {
       const status = e.response?.status
